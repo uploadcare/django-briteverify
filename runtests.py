@@ -12,6 +12,8 @@ TEST_DIR = os.path.join(
     'tests'
 )
 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
+
 if __name__ == '__main__':
     suite = unittest.loader.TestLoader().discover(TEST_DIR)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

@@ -1,0 +1,6 @@
+# coding: utf-8
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+SECRET_KEY = 'SECRET_KEY'
+USE_I18N = False

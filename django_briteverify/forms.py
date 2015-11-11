@@ -36,3 +36,13 @@ class BriteverifyFormMixin(object):
             self.add_error(self.EMAIL_FIELD_NAME,
                            self.error_messages['disposable_email'])
             return
+
+    def add_error(self, field, message, *args, **kwargs):
+        parent = super(BriteverifyFormMixin, self)
+
+        # Django >= 1.7
+        if hasattr(parent, 'add_error'):
+            return parent.add_error(field, message, *args, **kwargs)
+
+        self._errors[field] = [message]
+        return

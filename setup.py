@@ -20,7 +20,7 @@ test_requirements = [
 
 setup(
     name="django-briteverify",
-    version='0.9',
+    version='1.0',
 
     author="Uploadcare LLC",
     author_email="hello@uploadcare.com",
@@ -38,7 +38,7 @@ setup(
     license="MIT",
     keywords='django briteverify',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',

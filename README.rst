@@ -9,6 +9,9 @@ Django-briteverify
     :target: https://travis-ci.org/uploadcare/django-briteverify
     :alt: Build status
 
+Helper for easy integration between django and briteverify.com service.
+
+It supports Python2.6+, Django1.4+
 
 Installation
 ------------
@@ -20,7 +23,51 @@ Installation
 Usage
 -----
 
-TODO
+In common case as you need is use ``BriteverifyFormMixin`` for your forms and specify a ``BRITEVERIFY_API_KEY``:
+
+.. code:: python
+
+    # your_app/forms.py
+    from django import forms
+    from django_briteverify import BriteverifyFormMixin
+
+    class RegisterForm(BriteverifyFormMixin, forms.Form):
+        email = forms.EmailField()
+
+
+Set ``BRITEVERIFY_API_KEY`` as environment variable:
+
+.. code:: bash
+
+    $ export BRITEVERIFY_API_KEY='YOUR_API_KEY'
+
+
+Or define it directly in settings
+
+.. code:: python
+
+    # settings.py
+    BRITEVERIFY_API_KEY = 'YOUR_API_KEY'
+
+You can specify field name which be used as source for verifying:
+
+.. code:: python
+
+    class RegisterForm(BriteverifyFormMixin, forms.Form):
+        another_email = forms.EmailField()
+
+        EMAIL_FIELD_NAME = 'another_email'
+
+Also you can override error messages which raised if validation didn't pass:
+
+.. code:: python
+
+    class RegisterForm(BriteverifyFormMixin, forms.Form):
+        error_messages = {
+            'invalid_email': _('This is an invalid email address. '
+                               'Maybe you mistyped?'),
+            'disposable_email': _('Please provide your real email address.')
+        }
 
 
 Contributing

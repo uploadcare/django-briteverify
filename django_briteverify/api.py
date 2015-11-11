@@ -1,4 +1,5 @@
 # coding: utf-8
+import os
 import logging
 
 import requests
@@ -18,7 +19,8 @@ def check_email(email):
     """ Checks email by sending request to briteverify API
     Spec: http://docs.briteverify.com/real-time-api/
     """
-    api_key = getattr(settings, 'BRITEVERIFY_API_KEY', None)
+    api_key = (os.environ.get('BRITEVERIFY_API_KEY', None) or
+               getattr(settings, 'BRITEVERIFY_API_KEY', None))
     result = dict(valid=True, disposable=False)
 
     if not api_key:
